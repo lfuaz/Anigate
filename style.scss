@@ -1,0 +1,270 @@
+:root {
+  --radius-cursor: 15px;
+  --color-cursor: black;
+  --key-width: 40px;
+}
+*{
+  
+  outline: none;
+}
+@import "input.range.scss";
+
+
+::-webkit-scrollbar {
+  height: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+
+canvas {
+  cursor: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.help{
+  
+  position: absolute;
+  top:20px;
+  right:20px;
+  z-index: 99999;
+  background-color: transparent;
+  padding: 15px;
+  .space-bar{
+    text-align: center;
+    width: 160px;
+    background-color: red;
+    &:hover{
+      &::after{
+        position: absolute;
+        transform: translate(-5%, 30%);
+        background-color: #62626261;
+        color: #ffffffeb;
+        width: 180px;
+        border-radius: 7px;
+        display: table;
+        font-size: 12px;
+        text-align: center;
+        vertical-align: text-top;
+        content: "Press to save your drawing !";
+        height: 30px;
+        animation: fade-in 0.5s ease-in-out;
+      }
+    }
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+#tools {
+  position: absolute;
+  z-index: 99999;
+  background-color: #fff;
+  display: flex;
+  flex-direction: row;
+  padding: 15px;
+  margin: 15px;
+  border-radius: 5px;
+  align-items: center;
+  width: 170px;
+  gap: 7px;
+  box-shadow: 0px 0px 8px grey;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+
+  .btn-tool {
+    width: 30px;
+    height: 30px;
+    border: none;
+    &#eraser {
+      &.active {
+        filter: invert(1);
+      }
+    }
+
+    &#clear {
+    }
+
+    &#loop {
+      &.active {
+        filter: invert(1);
+      }
+    }
+  }
+}
+
+#tools > * {
+  cursor: pointer;
+}
+
+#frame {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 1;
+  background-color: red;
+  opacity: 0.9;
+  background-color: transparent;
+}
+
+#saved-frame {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+.js-timeline {
+  z-index: 9;
+  position: absolute;
+  box-shadow: 0px 0px 11px #00000059;
+  gap: 25px;
+  height: 80px;
+  overflow-y: hidden;
+
+  cursor: pointer;
+  .frame {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .add-frame {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 30px;
+      height: 30px;
+      background: #eee;
+      border-radius: 50%;
+      margin-left: 25px;
+      &:hover {
+        background: #ccc;
+      }
+    }
+
+    &:nth-child(1) {
+      margin-left: 0;
+    }
+
+    img {
+      background-color: rgb(96, 96, 96);
+      border-right: solid 0.1px rgba(195, 195, 195, 0.933);
+      width: 120px;
+      height: 80px;
+      opacity: 0.3;
+      &.playing {
+        opacity: 1;
+      }
+    }
+    .fas {
+      position: absolute;
+      top: 5%;
+      right: 37%;
+      color: red;
+      opacity: 1;
+      cursor: pointer;
+      z-index: 10;
+    }
+  }
+}
+
+.js-color-picker {
+  background: rgba(0, 0, 0, 0);
+  appearance: none;
+  width: 30px;
+  height: 30px;
+  border: dotted 2px;
+}
+
+.js-timeline {
+  position: absolute;
+  bottom: 0;
+  z-index: 10;
+  overflow-x: scroll;
+  white-space: nowrap;
+  width: 100%;
+  display: flex;
+}
+
+#cursor {
+  position: fixed;
+  z-index: 5;
+  width: var(--radius-cursor);
+  height: var(--radius-cursor);
+  border-radius: 50%;
+  opacity: 1;
+  background-color: var(--color-cursor);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+
+
+.keys {
+  width: 800px;
+  display: block;
+  margin: 35vh auto;
+}
+
+.key__button {
+  box-sizing: border-box;
+  line-height: var(--key-width);
+  font-size: 22px;
+  text-align: center;
+  width: var(--key-width);
+  color: #555;
+  cursor: pointer;
+  margin: 0 8px;
+  height: var(--key-width);
+  border-color: #f2f2f2;
+  border-style: solid;
+  text-shadow: 0 0.5px 1px #777, 0 2px 6px #f2f2f2;
+  border-width: 1px;
+  border-radius: 10px;
+  background: -webkit-linear-gradient(top, #f9f9f9 0%, #D2D2D2 80%, #c0c0c0 100%);
+  font-family: sans-serif;
+  display: inline-block;
+  transition: box-shadow 0.3s ease, transform 0.15s ease;
+  box-shadow: 0 0 1px #888,0 1px 0 #fff, 0 6px 0 #C0C0C0, 0 8px 17px rgba(#444, 0.4), 2px 1px 4px rgba(#444, 0.25), -2px 1px 4px rgba(#444, 0.25), 0 9px 16px rgba(#444, 0.1);
+  
+  &:hover,
+  &:focus {
+    box-shadow: 0 0 1px #888,0 1px 0 #fff, 0 4px 0 #C0C0C0, 0 2px 35px rgba(#444, 0.3), 2px 2px 1px rgba(#444, 0.25), -2px 2px 4px rgba(#444, 0.25), 0 7px 4px rgba(#444, 0.1);
+    transform: translateY(2px);
+  }
+  
+  &:active {
+    box-shadow: 0 0 1px #888,0 1px 0 #fff, 0 0 0 #C0C0C0, 0 0px 30px rgba(#444, 0.15), 2px 2px 4px rgba(#444, 0.25), -2px 2px 4px rgba(#444, 0.25), 0 0px 4px rgba(#444, 0.25);
+    transform: translateY(4px); 
+  }
+
+}

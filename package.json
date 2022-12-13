@@ -1,0 +1,20 @@
+{
+  "name": "Anega",
+  "version": "1.0.0",
+  "description": "logiciel d'animation",
+  "main": "main.js",
+  "author": "Lfuaz",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "set NODE_ENV=development&&electron .",
+    "start": "electron --disable-software-rasterizer .",
+    "sass": "sass style.scss style.css --watch --style compressed"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.3",
+    "electron": "^22.0.0",
+    "electron-reload": "^2.0.0-alpha.1"
+  },
+  "dependencies": {}
+}

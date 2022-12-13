@@ -1,0 +1,34 @@
+/* partie commune */
+input[type=range].custom-slider {
+  -webkit-appearance: none;     /*nécessaire pour Chrome */
+  padding: 0;                   /* nécessaire pour IE */
+  font: inherit;                /* même rendu suivant font document */
+  outline: none;
+  color: green;                  /* sert pour couleur de référence, via currentColor, pour le curseur */
+  opacity: .8;
+  background: #CCC;             /* sert pour couleur de fond de la zone de déplacement */
+  box-sizing: border-box;       /* même modèle de boîte pour tous */
+  transition: opacity .2s;
+  cursor: pointer;
+
+  &::-webkit-slider-runnable-track{
+    width: 100%;
+    height: 5px;
+    cursor: pointer;
+    background: #CCC;
+    border-radius: 10%;
+    border: none;
+  }
+
+  &::-webkit-slider-thumb{
+    box-shadow: 1px 1px 1px #000000;
+    border: none;
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    background: var(--color-cursor);
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -4px;
+  }
+}

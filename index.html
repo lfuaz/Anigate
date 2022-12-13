@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <script src="https://kit.fontawesome.com/a41109ca9b.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="style.css">
+  <!-- <script rel="preload" src="Frame.js"></script> -->
+  <script src="utils.js"></script>
+  <script rel="preload" src="./renderer.min.js"></script>
+  <link rel="preload" as="image" href="public/images/empty.png">
+
+
+</head>
+
+<body>
+  <div class="help">
+    <div class="space-bar key__button">Space</div>
+    <div class="f6 key__button">F6</div>
+  </div>
+  <div id="tools">
+    <div id="cursor"></div>
+    <input type="color" class="js-color-picker  color-picker">
+    <input type="range" class="js-line-range custom-slider" min="1" max="72" value="15">
+    <button id="loop" class="btn-tool"><i class="fa-solid fa-arrows-rotate"></i></button>
+    <button id="eraser" class="btn-tool"><i class="fa-solid fa-eraser"></i></button>
+    <button id="clear" class="btn-tool"><i class="fa-solid fa-broom"></i></button>
+    <button id="ctrl-z" class="btn-tool"><i class="fa-solid fa-arrow-rotate-left"></i></button>
+  </div>
+  <canvas id="frame"></canvas>
+  <canvas id="saved-frame"></canvas>
+  <div class="js-timeline">
+
+  </div>
+</body>
+
+</html>
