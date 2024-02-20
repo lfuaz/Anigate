@@ -1,6 +1,6 @@
 # Anigate
 
-Cross-platform animation software with web technologies.
+Cross-platform animation desktop application build using electron.
 
 ## Installation
 
